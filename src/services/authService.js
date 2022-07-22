@@ -9,15 +9,9 @@ const secret = process.env.JWT_SECRET;
 const authService = {
   validateBodyLogin: useSchema(Joi.object({
     email: Joi.string().required().email().max(255)
-      .min(1)
-      .messages({
-        'any.required': 'Some required fields are missing',
-      }),
+      .min(1),
 
-    password: Joi.string().required().max(255).min(1)
-      .messages({
-        'any.required': 'Some required fields are missing',
-      }),
+    password: Joi.string().required().max(255).min(1),
   })),
 
   async makeToken(data) {

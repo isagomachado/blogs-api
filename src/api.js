@@ -1,5 +1,6 @@
 const express = require('express');
 const authRoute = require('./routes/authRoute');
+const userRoute = require('./routes/userRoute');
 const errorMidleware = require('./middlewares/errorMiddleware');
 
 // ...
@@ -11,6 +12,8 @@ app.use(express.json());
 // ...
 
 app.use('/login', authRoute);
+
+app.use('/user', userRoute);
 
 app.use(errorMidleware);
 
