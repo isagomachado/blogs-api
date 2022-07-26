@@ -17,7 +17,7 @@ const authService = {
   async makeToken(data) {
     const { email } = data;
     const payload = { data: { email } };
-    const token = jwt.sign(payload, secret);
+    const token = jwt.sign(payload, secret, {expiresIn:'30d'});
     return token;
   },
 

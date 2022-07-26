@@ -1,11 +1,20 @@
-const errorMidleware = (err, _req, res, _next) => {
-  const { name, message } = err;
-  switch (name) {
-    case 'ValidationError': res.status(400).json({ message }); break;
-    case 'NotFoundError': res.status(404).json({ message }); break;
-    case 'UnauthorizedError': res.status(400).json({ message }); break;
-    default: res.status(500).json(err.message);
-  }
+const errors = {
+  ValidationError: 400,
+  UnauthorizedError: 401,
+  NotFoundError: 404,
+  SequelizeUniqueConstraintError: 409,
+};
+
+/**
+ * @param {Error} err 
+ * @param {import('express').Request} req 
+ * @param {import('express').Response} res 
+ * @param {import('express').NextFunction} next 
+ */
+const errorMidleware = ({ name, message }, _req, res, _next) => {
+  const status = errors[name];
+  if (!status) return res.sendStatus(500);
+  res.status(status).json({ message });
 };
 
 module.exports = errorMidleware;

@@ -2,6 +2,7 @@ const authService = require('../services/authService');
 const userService = require('../services/userService');
 
 const userController = {
+  /** @type {import('express').RequestHandler} */
   async add(req, res) {
     const { displayName, email, password, image } = req.body;
     const { value, error } = await userService.validateBodyAdd({ displayName, email, password });
@@ -17,6 +18,12 @@ const userController = {
     const token = await authService.makeToken(user);
     return res.status(201).json({ token });
   },
+
+ /** @type {import('express').RequestHandler} */
+  async list(req, res) {
+    const users = await userService.list();
+    return res.status(200).json(users);
+  }
 };
 
 module.exports = userController;
