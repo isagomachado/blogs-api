@@ -44,6 +44,17 @@ const userService = {
     return users;
   },
 
+  async getById(id) {
+    const model = await models.User.findByPk(id, {
+      attributes: { exclude: ['password'] },
+    });
+    
+    if (!model) return false;
+
+    const user = model.toJSON();
+    return user;
+  },
+
 };
 
 module.exports = userService;

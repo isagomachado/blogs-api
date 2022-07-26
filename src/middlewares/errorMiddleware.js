@@ -2,6 +2,7 @@ const errors = {
   ValidationError: 400,
   UnauthorizedError: 401,
   NotFoundError: 404,
+  InvalidIdError: 400,
   SequelizeUniqueConstraintError: 409,
 };
 

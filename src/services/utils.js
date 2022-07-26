@@ -10,6 +10,12 @@ const throwUnauthorizedError = (message) => {
   throw err;
 };
 
+const throwInvalidIdError = (message) => {
+  const error = new Error(message);
+  error.name = 'InvalidIdError';
+  throw error;
+};
+
 const useSchema = (schema) => async (aux) => {
   const value = await schema.validate(aux);
   return value;
@@ -18,5 +24,6 @@ const useSchema = (schema) => async (aux) => {
 module.exports = {
   throwNotFoundError,
   throwUnauthorizedError,
+  throwInvalidIdError,
   useSchema,
 };
