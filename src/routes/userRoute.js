@@ -5,8 +5,8 @@ const verifyIdMiddleware = require('../middlewares/verifyIdMiddleware');
 
 const userRoute = Router();
 
+userRoute.get('/:id', verifyTokenMiddleware, verifyIdMiddleware, userController.getById);
 userRoute.post('/', userController.add);
 userRoute.get('/', verifyTokenMiddleware, userController.list);
-userRoute.get('/:id', verifyTokenMiddleware, verifyIdMiddleware, userController.getById);
 
 module.exports = userRoute;
