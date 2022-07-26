@@ -17,6 +17,11 @@ const categoriesService = {
 
     return newCategory;
   },
+
+  async list() {
+    const categories = await models.Category.findAll();
+    return categories;
+  },
 };
 
 module.exports = categoriesService;

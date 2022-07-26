@@ -14,6 +14,12 @@ const categoriesController = {
 
     return res.status(201).json(Category);
   },
+
+  /** @type {import('express').RequestHandler} */
+  async list(req, res) {
+    const categories = await categoriesService.list();
+    return res.status(200).json(categories);
+  },
 };
 
 module.exports = categoriesController;

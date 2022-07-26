@@ -5,6 +5,7 @@ const verifyTokenMiddleware = require('../middlewares/verifyTokenMiddleware');
 
 const categoriesRoute = Router();
 
+categoriesRoute.get('/', verifyTokenMiddleware, categoriesController.list);
 categoriesRoute.post('/', verifyTokenMiddleware, categoriesController.add);
 
 module.exports = categoriesRoute;
