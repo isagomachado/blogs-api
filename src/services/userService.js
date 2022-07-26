@@ -39,10 +39,11 @@ const userService = {
 
   async list() {
     const users = await models.User.findAll({
-      attributes: { exclude: ['password']},
+      attributes: { exclude: ['password'] },
     });
     return users;
   },
+
 };
 
 module.exports = userService;

@@ -6,5 +6,8 @@ const userRoute = Router();
 
 userRoute.post('/', userController.add);
 userRoute.get('/', verifyTokenMiddleware, userController.list);
+userRoute.get('/:id', (req, res) => {
+  res.send('passou');
+});
 
 module.exports = userRoute;

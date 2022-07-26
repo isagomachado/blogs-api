@@ -23,7 +23,7 @@ const userController = {
   async list(req, res) {
     const users = await userService.list();
     return res.status(200).json(users);
-  }
+  },
 };
 
 module.exports = userController;
